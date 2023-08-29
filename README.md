@@ -1,2 +1,2 @@
 # breaking-bad-app
-App created to show that the episodes of this wonderful show go far beyond what we can see
+App created to relate colors to characters and situations and to show that each scene in this series goes beyond what we are seeing.
