@@ -1,29 +1,57 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { View, Image, Text, StyleSheet, FlatList } from "react-native";
 
-export default function Details({ navigate }) {
-  const doSomething = () => {
-    navigation.navigate("Home");
-  };
-  return (
-    <View style={styles.container}>
-      {/* <Text>Breaking Bad!</Text> */}
-      <View style={styles.box}>Outra</View>
-      <View style={styles.button}>
-        <Button title="Back to home" onPress={doSomething} />
-      </View>
+export default function Details({ route }) {
+  const c = route.params.color;
+  const myData = [
+    {
+      key: 1,
+      image: "image_url_1",
+      text: "Text 1",
+    },
+    {
+      key: 2,
+      image: "image_url_2",
+      text: "Text 2",
+    },
+  ];
+
+  const renderListItem = ({ item }) => (
+    <View style={styles.itemContainer}>
+      <Image source={{ uri: item.image }} style={styles.image} />
+      <Text style={styles.text}>{item.text}</Text>
     </View>
+  );
+
+  return (
+    <FlatList
+      data={myData}
+      renderItem={renderListItem}
+      keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={styles.listContainer}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  box: {
-    height: "100px",
-    backgroundColor: "black",
+  listContainer: {
+    flex: 1, // Fill the available space
+    justifyContent: "center", // Vertically center items
+    alignItems: "center", // Horizontally center items
+    paddingVertical: 10,
   },
-  // button: {
-  //   backgroundColor: "purple",
-  //   width: "100px",
-  // },
+  itemContainer: {
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  image: {
+    width: 200,
+    height: 200,
+    resizeMode: "cover",
+    marginBottom: 10,
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });

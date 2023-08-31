@@ -1,30 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 
 export default function Home({ navigation }) {
-  const doSomething = () => {
-    console.log(4444);
-    navigation.navigate("Details");
+  const goToColorsList = () => {
+    navigation.navigate("ColorsList");
   };
   return (
     <View style={styles.container}>
-      {/* <Text>Breaking Bad!</Text> */}
-      <View style={styles.box}></View>
-      <View style={styles.button}>
-        <Button title="test" onPress={doSomething} />
+      <View style={styles.title}>
+        <Text style={styles.titleText}>Breaking Bad</Text>
       </View>
+      <Button title="Colors" onPress={goToColorsList} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  box: {
-    height: "100px",
-    backgroundColor: "black",
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
   },
-  // button: {
-  //   backgroundColor: "purple",
-  //   width: "100px",
-  // },
+  title: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  titleText: {
+    fontSize: "20px",
+    marginBottom: "10px",
+  },
 });
