@@ -16,7 +16,7 @@ export default function ColorsList({ navigation }) {
   const containerValues = [
     {
       key: 1,
-      container: "Blue",
+      container: "Lealdade, paz",
       value: "blue",
     },
     {
@@ -46,27 +46,37 @@ export default function ColorsList({ navigation }) {
       onPress={() => goToDetails(item.value)}
       style={[styles.container, { backgroundColor: item.value }]}
     >
-      <Text style={styles.containerText}>{item.container}</Text>
+      <Text style={styles.content}>{item.container}</Text>
     </TouchableOpacity>
   );
 
   return (
-    <FlatList
-      data={containerValues}
-      renderItem={renderContainerItem}
-      keyExtractor={(item) => item.key.toString()}
-      contentContainerStyle={styles.listContainer}
-    />
+    <View style={styles.wrapper}>
+      {/* <Text style={styles.introText}>Toda cor tem um significado</Text> */}
+      <FlatList
+        data={containerValues}
+        renderItem={renderContainerItem}
+        keyExtractor={(item) => item.key.toString()}
+        contentContainerStyle={styles.listContainer}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  listContainer: {
-    paddingVertical: 10,
-  },
+  wrapper: {},
   container: {
-    width: "100%",
-    height: 100,
+    height: 150,
+  },
+  listContainer: {},
+  content: {
+    textAlign: "center",
+  },
+  introText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 20,
+    marginTop: 10,
   },
 });
